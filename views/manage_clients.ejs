@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include templates/commonheaders.ejs %>
+    <script src="scripts/manage_clients.js"></script>
+</head>
+
+<body>
+<% include templates/navbar.ejs %>
+<% include templates/notification.ejs %>
+<div class="main">
+    <h1 onclick="showNotification();">Manage Clients</h1>
+    <h3>Add Client</h3>
+        <p>Please enter the name for the client. Adding a new client will download a zipped pair of
+            certificates for the client to access the server. Unzip this file and place both of the
+            files within in <i>C:\WECOTrakV2\WECOTruckClient</i> folder on the <strong>client</strong> machine.
+            This folder may need to be created if it is not present.
+        </p>
+    <div style="height: 75px;">
+        <iframe name="hidden_iframe" class="hidden"></iframe>
+        <form method="post" action="/add_client" target="hidden_iframe">
+            <span><label style="margin-right: 50px;">Client Name</label><input type="text" placeholder="Name" id="clientnameentry" name="name"></span>
+            <button class="button" onclick="addClient();">Add Client</button>
+        </form>
+    </div>
+    <h3>All Clients</h3>
+    <div class="table-container">
+        <table class="display-table">
+            <thead>
+            <tr>
+                <% for (const prop in data[0]) {%>
+                <th> <%= prop %> </th>
+                <% } %>
+            </tr>
+            </thead>
+            <% for (const datum of data) { %>
+            <tr  id="client<%= datum['id'] %>">
+                <% for (const prop in datum) {%>
+                <td id="<%= datum['id'] + prop %>"><%= datum[prop] %></td>
+                <% } %>
+                <td><img src="images/x.png" class="close" onclick="removeClient(<%= datum['id'] %>)"></td>
+            </tr>
+            <% } %>
+        </table>
+    </div>
+</div>
+<% include templates/footer.ejs %>
+</body>
+</html>
+

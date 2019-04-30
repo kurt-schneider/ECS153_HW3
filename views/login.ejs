@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include templates/commonheaders.ejs %>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="scripts/common.js"></script>
+</head>
+
+<body>
+<% include templates/navbar_simple.ejs %>
+<% include templates/notification.ejs %>
+<div class="main">
+    <h1>Login</h1>
+
+    <div style="width: 150px; margin: auto">
+        <form action="javascript:login()">
+            <span><label>Username</label><input title="Username" type="username" id="usernameentry"></span>
+            <br>
+            <br>
+            <span><label>Password</label><input title="Password" type="password" id="passwordentry"></span>
+            <br>
+            <br>
+            <button class="button right">Login</button>
+        </form>
+        <!-- <div class="g-signin2 button" data-onsuccess="onSignIn"></div> !-->
+    </div>
+
+</div>
+<% include templates/footer.ejs %>
+</body>
+</html>
+

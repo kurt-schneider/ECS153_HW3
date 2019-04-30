@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include templates/commonheaders.ejs %>
+    <script src="scripts/manage_clients.js"></script>
+</head>
+
+<body>
+<% include templates/navbar.ejs %>
+<% include templates/notification.ejs %>
+<div class="main">
+    <h1>All Bug Reports</h1>
+    <h2><%= data.tablename %></h2>
+    <div class="table-container">
+        <table class="display-table">
+            <thead>
+                <tr>
+                    <% for (var prop in data[0]) {%>
+                    <th class="<%= prop %>"> <%= prop %> </th>
+                    <% } %>
+                </tr>
+            </thead>
+            <% for (var datum of data) { %>
+            <tr>
+                <% for (var prop in datum) {%>
+                    <td class="<%=prop%>"><%- datum[prop] %></td>
+                <% } %>
+            </tr>
+            <% } %>
+        </table>
+        <br>
+        <br>
+    </div>
+    <h1>New Bug Entry</h1>
+    <input id="bug_entry" placeholder="New Bug Description">
+    <button class="button right" onclick="addBug();">Add Bug Report</button>
+</div>
+<% include templates/footer.ejs %>
+</body>
+</html>
+

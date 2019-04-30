@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include templates/commonheaders.ejs %>
+</head>
+
+<body>
+<% include templates/navbar.ejs %>
+<div class="main">
+    <h1>Table Select</h1>
+    <% for (const tablename of data) { %>
+        <a class='table-select' href='?tablename=<%= tablename %>'><%= tablename %></a>
+    <% } %>
+</div>
+<% include templates/footer.ejs %>
+</body>
+</html>
+

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include templates/commonheaders.ejs %>
+</head>
+
+<body>
+<% include templates/navbar.ejs %>
+<% include templates/notification.ejs %>
+<div class="main">
+    <h1 onclick="showNotification();">Manage Admins</h1>
+    <h3>Add Admin</h3>
+
+    <div style="height: 75px;">
+        <iframe name="hidden_iframe" class="hidden"></iframe>
+        <form method="post" action="/add_client" target="showNotification();">
+            <span><label style="margin-right: 50px;">Admin Name</label><input type="text" placeholder="Name" id="clientnameentry" name="name"></span>
+            <button class="button" onclick="addClient();">Add Client</button>
+        </form>
+    </div>
+    <h3>All Admins</h3>
+    <div class="table-container">
+
+    </div>
+</div>
+<% include templates/footer.ejs %>
+</body>
+</html>
+
